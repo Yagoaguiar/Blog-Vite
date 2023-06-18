@@ -4,18 +4,18 @@ import styles from "../styles/Navbar.module.css"
 
 const Navbar = () => {
   return (
-    <nav>
-        <NavLink to="/">
+    <nav className={styles.navbar}>
+        <NavLink to="/" className={styles.brand}>
             Mini <span>Blog</span>
         </NavLink>
-        <ul>
+        <ul className={styles.links_list}>
             <li>
-                <NavLink to="/Home">
+                <NavLink to="/Home" className={({isActive}) => (isActive ? styles.active : '')} >
                     Home
                 </NavLink>
             </li>
             <li>
-                <NavLink to="/About">
+                <NavLink to="/About" className={({isActive}) => (isActive ? styles.active : '')}>
                     Sobre
                 </NavLink>
             </li>
