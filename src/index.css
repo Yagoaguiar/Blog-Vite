@@ -37,7 +37,7 @@ form {
 label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1px;
+  margin-bottom: 1em;
 }
 label span {
   margin-bottom: 0.3em;
@@ -53,8 +53,8 @@ texarea {
   background-color: transparent;
 }
 .btn {
-  background-color: #1A8918;
-  color: #FFF;
+  background-color: #1a8918;
+  color: #fff;
   text-align: center;
   cursor: pointer;
   border-radius: 10px;
@@ -79,24 +79,23 @@ texarea {
 
 .btn:hover {
   background-color: #0f730c;
-  color: #FFF;
+  color: #fff;
 }
 
-.btn.btn-outline:hover{
+.btn.btn-outline:hover {
   background-color: #000;
 }
 
-.btn.btn-danger:hover{
-  background-color: #DC3545;
+.btn.btn-danger:hover {
+  background-color: #dc3545;
 }
-butto:disabled{
+butto:disabled {
   background-color: #aaa;
 }
-.container.error{
+.container.error {
   color: #721c24;
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
   padding: 5px;
-  border-radius: 5px;  
+  border-radius: 5px;
 }
-
