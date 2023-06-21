@@ -20,33 +20,59 @@ const Navbar = () => {
           </NavLink>
         </li>
         {!user && (
-            <>
+          <>
             <li>
-          <NavLink
-            to="/login"
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Entrar
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/register"
-            className={({ isActive }) => (isActive ? styles.active : "")}
-          >
-            Cadastrar
-          </NavLink>
-        </li>
-            </>
+              <NavLink
+                to="/login"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Entrar
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/register"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Cadastrar
+              </NavLink>
+            </li>
+          </>
+        )}
+
+        {user && (
+          <>
+            <li>
+              <NavLink
+                to="/posts/create"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Novo post
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          </>
         )}
         <li>
           <NavLink
-            to="/About"
+            to="/about"
             className={({ isActive }) => (isActive ? styles.active : "")}
           >
             Sobre
           </NavLink>
         </li>
+        {user && (
+          <li>
+            <button onClick={logout}>Sair</button>
+          </li>
+        )}
       </ul>
     </nav>
   );

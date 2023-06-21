@@ -10,6 +10,8 @@ import Footer from "./pages/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { AuthProvider } from "./content/AuthContext";
+import CreatePost from "./pages/CreatePost";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -36,6 +38,8 @@ function App() {
               <Route path="/About" element={<About />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/post/criar" element={<CreatePost />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </div>
           <Footer />
