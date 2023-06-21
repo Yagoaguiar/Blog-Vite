@@ -13,6 +13,7 @@ export const useAuthentication = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
+  // deal with memory leak
   const [cancelled, setCancelled] = useState(false);
 
   const auth = getAuth();
@@ -60,6 +61,8 @@ export const useAuthentication = () => {
     setLoading(false);
   };
 
+
+  
   const logout = () => {
     checkIfIsCancelled();
 
