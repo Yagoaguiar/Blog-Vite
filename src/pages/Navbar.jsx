@@ -68,12 +68,12 @@ const Navbar = () => {
           >
             Sobre
           </NavLink>
-          {user && (
+        </li>
+        {user && (
             <li>
               <button onClick={logout}>Sair</button>
             </li>
           )}
-        </li>
       </ul>
     </nav>
   );
