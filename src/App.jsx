@@ -35,7 +35,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/Home" element={<Home />} />
-              <Route path="/About" element={<About />} />
+              <Route path="/about" element={<About />} />
               <Route
                 path="/login"
                 element={!user ? <Login /> : <Navigate to="/home" />}
@@ -53,7 +53,6 @@ function App() {
                 element={user ? <Dashboard /> : <Navigate to="/login" />}
               />
             </Routes>
-            
           </div>
           <Footer />
         </BrowserRouter>
