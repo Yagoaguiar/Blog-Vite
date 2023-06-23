@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import { AuthProvider } from "./content/AuthContext";
 import CreatePost from "./pages/CreatePost";
 import Dashboard from "./pages/Dashboard";
+import Search from "./pages/Search";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -35,6 +36,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/Home" element={<Home />} />
+              <Route path="/searc" element={<Search />} />
               <Route path="/about" element={<About />} />
               <Route
                 path="/login"
