@@ -26,16 +26,24 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
       try {
         let q;
 
-        q = await query(collectionREf, orderBy("createAt", "desc"));
+        if (search) {
+          q = await query(
+            collectionREf,
+            where("tagsArray", "array-contais", search),
+            orderBy("createAt", "desc")
+          );
+        } else {
+          q = await query(collectionREf, orderBy("createAt", "desc"));
+        }
 
         await onSnapshot(q, (snapshot) => {
-            setDocuments(
-              snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-              }))
-            );
-          });
+          setDocuments(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            }))
+          );
+        });
 
         //para fazer alteração de dados
       } catch (error) {

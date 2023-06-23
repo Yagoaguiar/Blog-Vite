@@ -1,5 +1,5 @@
 import style from "../styles/Home.module.css";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { useFetchDocuments } from "../hooks/useFetchDocuments";
 import PostDetail from "./Post.Detail";
@@ -7,6 +7,16 @@ import PostDetail from "./Post.Detail";
 const Home = () => {
   const [query, setQuery] = useState("");
   const { documents: posts, loading } = useFetchDocuments("posts");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (query) {
+      return navigate(`/search?q=${query}`);
+    }
+  };
   return (
     <div className={style.home}>
       <h1>Veja o que há de novo </h1>
