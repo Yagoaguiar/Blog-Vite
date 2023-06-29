@@ -1,12 +1,15 @@
 import style from "../styles/Login.module.css";
 import { useEffect, useState } from "react";
 import { useAuthentication } from "../hooks/useAuthentication";
+import { useNavigate, Link } from "react-router-dom";
+
 const Login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [error, setError] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const { login, error: authError, loading } = useAuthentication();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +23,9 @@ const Login = () => {
 
     const res = await login(user);
 
-    console.log(res);
+    if (res) {
+      navigate("/profile");
+    }
   };
 
   useEffect(() => {
@@ -33,7 +38,7 @@ const Login = () => {
   return (
     <div className={style.login}>
       <h1>Entrar</h1>
-      <p>Faça o seu login e conte a sua história</p>
+      <p>Faça o seu login e nos conte sua história</p>
       <form onSubmit={handleSubmit}>
         <label>
           <span>E-mail:</span>
@@ -65,6 +70,7 @@ const Login = () => {
         )}
         {error && <p className="error">{error}</p>}
       </form>
+      <Link to="/esqueceu-senha">Esqueceu a senha?</Link>{" "}
     </div>
   );
 };

@@ -48,10 +48,20 @@ const CreatePost = () => {
     });
     navigate("/");
   };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setImage(event.target.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <div className={style.create__post}>
       <h2>Criar post</h2>
-      <p>Venha compartilhar historias, estamos curiosos para saber!</p>
+      <p>Venha compartilhar histórias, estamos curiosos para saber!</p>
       <form onSubmit={handleSubmit}>
         <label>
           <span>Título:</span>
@@ -65,17 +75,26 @@ const CreatePost = () => {
           />
         </label>
         <label>
-          <span>URL da imagem:</span>
+          <span>Imagem:</span>
           <input
-            type="text"
+            type="file"
+            accept="image/*"
             name="image"
-            placeholder="Insira uma imagem que representa seu post"
-            onChange={(e) => setImage(e.target.value)}
-            value={image}
+            onChange={handleImageUpload}
           />
         </label>
+        {image && (
+          <div>
+            <span>Preview:</span>
+            <img
+              className={style.create__post__image}
+              src={image}
+              alt="Preview"
+            />
+          </div>
+        )}
         <label>
-          <span>Descreva a sua historia:</span>
+          <span>Descreva a sua história:</span>
           <textarea
             name="body"
             required
@@ -98,7 +117,7 @@ const CreatePost = () => {
         {!response.loading && <button className="btn">Criar post!</button>}
         {response.loading && (
           <button className="btn" disabled>
-            Aguarde.. .
+            Aguarde...
           </button>
         )}
         {(response.error || formError) && (
