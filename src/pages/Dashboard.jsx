@@ -60,7 +60,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className={style.Dashboard}>
+    <div className={style.dashboard}>
       <h1>Dashboard</h1>
       <p>Gerencie seus posts</p>
       {posts.length === 0 ? (
