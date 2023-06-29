@@ -1,0 +1,30 @@
+.edit-post {
+    text-align: center;
+  }
+  
+  .edit-post h2 {
+    font-size: 2.2em;
+  }
+  
+  .edit-post form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2em;
+  }
+  
+  .edit-post form div {
+    margin-bottom: 1em;
+  }
+  
+  .edit-post label {
+    font-weight: bold;
+  }
+  
+  .edit-post img {
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin-top: 1em;
+  }
+  
