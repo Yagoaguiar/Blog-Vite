@@ -1,0 +1,30 @@
+.edit_post {
+    text-align: center;
+  }
+  
+  .edit_post h2 {
+    font-size: 2.2em;
+  }
+  
+  .edit_post form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2em;
+  }
+  
+  .edit_post form div {
+    margin-bottom: 1em;
+  }
+  
+  .edit_post label {
+    font-weight: bold;
+  }
+  
+  .edit_post img {
+    max-width: 300px; /* Defina o tamanho máximo desejado para a imagem */
+    height: auto;
+    display: block;
+    margin-top: 1em;
+  }
+  
