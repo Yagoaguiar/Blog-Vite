@@ -58,29 +58,29 @@ const Dashboard = () => {
   if (loading) {
     return <p>Loading...</p>;
   }
-  
+
   return (
-    <div className={style.Dashboard}>
+    <div className={style.dashboard}>
       <h1>Dashboard</h1>
       <p>Gerencie seus posts</p>
       {posts.length === 0 ? (
         <div className={style.noposts}>
           <p>Não foram encontrados posts</p>
-          <Link to="/posts/create" className={style.btn}>
+          <Link to="/posts/create" className="btn">
             Criar primeiro Post
           </Link>
         </div>
       ) : (
         <>
-          <div>
+          <div className={style.post_header}>
             <span> Título </span>
             <span> Ações </span>
           </div>
 
           {posts.map((post) => (
-            <div key={post.id}>
+            <div className={style.post_row} key={post.id}>
               <p>{post.title}</p>
-              <div>
+              <div className={style.actions}>
                 <button
                   onClick={() => handleViewPost(post.id)}
                   className="btn btn-outline"

@@ -14,7 +14,7 @@ import CreatePost from "./pages/CreatePost";
 import Dashboard from "./pages/Dashboard";
 import Search from "./pages/Search";
 import PostDetail from "./pages/PostDetail";
-import EditPost from "./pages/EditPost";
+import EditPost from "./pages/PostDetail";
 import ForgotPassword from "./pages/ForgotPassword";
 import "./App.css";
 

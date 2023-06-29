@@ -10,3 +10,9 @@
   color: #aaa;
   margin-bottom: 2em;
 }
+
+.create__post img {
+  max-width: 100%;
+  height: auto;
+  max-height: 200px; /* Defina a altura máxima desejada */
+}

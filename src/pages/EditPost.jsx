@@ -60,7 +60,7 @@ const EditPost = () => {
   }
 
   return (
-    <div className={style["edit-post"]}>
+    <div className={style.edit_post}>
       <h2>Edit Post</h2>
       <form>
         <div>

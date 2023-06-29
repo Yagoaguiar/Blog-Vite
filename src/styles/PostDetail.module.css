@@ -29,3 +29,16 @@
     font-size: 0.8em;
     margin-bottom: 1em;
   }
+
+  .post_detail {
+    margin-bottom: 2em;
+  }
+  
+  .post_detail img {
+    width: 100%;
+    max-width: 400px; /* Defina o tamanho máximo desejado */
+    height: auto;
+    display: block;
+    margin-top: 1em;
+  }
+  
