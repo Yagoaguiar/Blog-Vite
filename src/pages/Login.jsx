@@ -70,7 +70,9 @@ const Login = () => {
         )}
         {error && <p className="error">{error}</p>}
       </form>
-      <Link to="/esqueceu-senha">Esqueceu a senha?</Link>{" "}
+      <button className="esqueciSenha">
+        <Link to="/esqueceu-senha">Esqueceu a senha?</Link>{" "}
+      </button>
     </div>
   );
 };
