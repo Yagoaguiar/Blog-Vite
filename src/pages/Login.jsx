@@ -22,10 +22,8 @@ const Login = () => {
     };
 
     const res = await login(user);
-
-    if (res) {
-      navigate("/profile");
-    }
+    navigate("/");
+    console.log(res);
   };
 
   useEffect(() => {
@@ -34,6 +32,10 @@ const Login = () => {
       setError(authError);
     }
   }, [authError]);
+
+  const handleForgotPassword = () => {
+    navigate("/esqueceu-senha");
+  };
 
   return (
     <div className={style.login}>
@@ -70,8 +72,8 @@ const Login = () => {
         )}
         {error && <p className="error">{error}</p>}
       </form>
-      <button className="esqueciSenha">
-        <Link to="/esqueceu-senha">Esqueceu a senha?</Link>{" "}
+      <button className="esqueciSenha" onClick={handleForgotPassword}>
+        <Link to="/esqueceu-senha">Esqueceu a senha?</Link>
       </button>
     </div>
   );
