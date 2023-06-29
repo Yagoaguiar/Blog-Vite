@@ -1,61 +1,67 @@
-import { useState, useEffect } from "react";
-import { db } from "../firebase/config";
-import {
-  collection,
-  query,
-  orderBy,
-  onSnapshot,
-  where,
-  QuerySnapshot,
-} from "firebase/firestore";
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
+import { db } from '../Firebase/config';
 
-export const useFetchDocuments = (docCollection, search = null, uid = null) => {
-  const [documents, setDocuments] = useState(null);
+const FetchDocumentsContext = createContext();
+
+export const FetchDocumentsProvider = ({ children }) => {
+  const [documents, setDocuments] = useState([]);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(null);
-
+  const [loading, setLoading] = useState(false);
   const [cancelled, setCancelled] = useState(false);
 
   useEffect(() => {
-    async function loadData() {
+    let unsubscribe;
+
+    const loadData = async () => {
       if (cancelled) return;
 
       setLoading(true);
 
-      const collectionREf = await collection(db, docCollection);
       try {
-        let q;
+        const collectionRef = collection(db, 'posts');
+        const q = query(collectionRef, orderBy('createdAt', 'desc'));
 
-        if (search) {
-          q = await query(
-            collectionREf,
-            where("tagsArray", "array-contais", search),
-            orderBy("createAt", "desc")
-          );
-        } else {
-          q = await query(collectionREf, orderBy("createAt", "desc"));
-        }
-
-        await onSnapshot(q, (snapshot) => {
+        unsubscribe = onSnapshot(q, (querySnapshot) => {
           setDocuments(
-            snapshot.docs.map((doc) => ({
+            querySnapshot.docs.map((doc) => ({
               id: doc.id,
               ...doc.data(),
             }))
           );
         });
 
-        //para fazer alteração de dados
+        setLoading(false);
       } catch (error) {
         console.log(error);
+        setError(error.message);
         setLoading(false);
       }
-    }
-    loadData();
-  }, [docCollection, search, uid, cancelled]);
+    };
 
-  useEffect(() => {
-    return () => setCancelled(true);
+    loadData();
+
+    return () => {
+      setCancelled(true);
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   }, []);
-  return documents, loading, error;
+
+  const contextValue = {
+    documents,
+    loading,
+    error,
+  };
+
+  return (
+    <FetchDocumentsContext.Provider value={contextValue}>
+      {children}
+    </FetchDocumentsContext.Provider>
+  );
+};
+
+export const useFetchDocuments = () => {
+  return useContext(FetchDocumentsContext);
 };
