@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
-import styles from "../styles/PostDetail.module.css"; 
+import styles from "../styles/PostDetail.module.css";
 
 const PostDetail = () => {
   const { id } = useParams();
