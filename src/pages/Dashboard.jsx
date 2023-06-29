@@ -72,15 +72,15 @@ const Dashboard = () => {
         </div>
       ) : (
         <>
-          <div>
+          <div className={style.post_header}>
             <span> Título </span>
             <span> Ações </span>
           </div>
 
           {posts.map((post) => (
-            <div key={post.id}>
+            <div className={style.post_row} key={post.id}>
               <p>{post.title}</p>
-              <div>
+              <div className={style.actions}>
                 <button
                   onClick={() => handleViewPost(post.id)}
                   className="btn btn-outline"
