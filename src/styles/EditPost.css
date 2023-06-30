@@ -1,0 +1,53 @@
+.edit-post {
+  text-align: center;
+}
+
+.edit_post h2 {
+  font-size: 2.2em;
+  margin-bottom: 1em;
+}
+
+.card { 
+  max-width: 500px;
+  margin: 3rem auto;
+  padding: 2em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.card input[type="text"],
+.card textarea {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1em;
+}
+
+.card img {
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+}
+
+.card button {
+  padding: 0.5em 1em;
+  background-color: #1a8918;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #0056b3;
+}

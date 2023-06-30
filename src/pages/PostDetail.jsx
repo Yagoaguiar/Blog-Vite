@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
-import styles from "../styles/PostDetail.module.css";
+import "../styles/PostDetail.css";
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -30,11 +30,17 @@ const PostDetail = () => {
   }
 
   return (
-    <div className={styles.post_detail}>
-      <h2>{post.title}</h2>
-      <img src={post.image} alt="Post" />
-      <p>{post.body}</p>
-      <p>{post.tags}</p>
+    <div className="post_detail">
+      <div className="card">
+        <h2>{post.title}</h2>
+        <img src={post.image} alt="Post" />
+        <p>{post.body}</p>
+        <div className="tags">
+          <p><span>Tags:</span></p>
+          <p>{post.tags}</p>
+        </div>
+        <p className="createdby">Created by: {post.createdBy}</p>
+      </div>
     </div>
   );
 };
