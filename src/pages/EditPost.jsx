@@ -12,6 +12,7 @@ const EditPost = () => {
   const [body, setBody] = useState("");
   const [image, setImage] = useState("");
   const [newImage, setNewImage] = useState(null); // Armazena a nova imagem selecionada
+  const [formError, setFormError] = useState("");
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -35,16 +36,21 @@ const EditPost = () => {
   }, [id]);
 
   const handleUpdate = async () => {
+    if (!title || !body) {
+      setFormError("Por favor, preencha todos os campos obrigatórios!");
+      return;
+    }
+
     try {
       const postData = {
         title,
         body,
-        image: newImage || image, // Use a nova imagem selecionada, se disponível, caso contrário, mantenha a imagem existente
+        image: newImage || image,
       };
 
       await updateDoc(doc(db, "posts", id), postData);
       console.log("Post updated successfully");
-      navigate(`/post/${id}`); // Redirecionar para a página de detalhes do post
+      navigate(`/post/${id}`);
     } catch (error) {
       console.log("Error occurred while updating post:", error);
     }
@@ -70,6 +76,7 @@ const EditPost = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+          {!title && <p className={style["required-field"]}>O campo título é obrigatório.</p>}
         </div>
         <div>
           <label>Body:</label>
@@ -77,12 +84,14 @@ const EditPost = () => {
             value={body}
             onChange={(e) => setBody(e.target.value)}
           ></textarea>
+          {!body && <p className={style["required-field"]}>O campo body é obrigatório.</p>}
         </div>
         <div>
           <label>Image:</label>
           <img src={newImage || image} alt="Post" />
           <input type="file" accept="image/*" onChange={handleImageUpload} />
         </div>
+        {formError && <p className={style["error-message"]}>{formError}</p>}
         <button type="button" onClick={handleUpdate}>
           Update Post
         </button>

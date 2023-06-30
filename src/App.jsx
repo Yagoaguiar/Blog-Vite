@@ -15,6 +15,7 @@ import Search from "./pages/Search";
 import PostDetail from "./pages/PostDetail";
 import EditPost from "./pages/EditPost";
 import ForgotPassword from "./pages/ForgotPassword";
+import Error404 from "./pages/Error404"; // New import statement
 import "./App.css";
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
                 element={user ? <Dashboard /> : <Navigate to="/login" />}
               />
               <Route path="/esqueceu-senha" element={<ForgotPassword />} />
+              <Route path="*" element={<Error404 />} /> {/* Error 404 route */}
             </Routes>
           </div>
           <Footer />
