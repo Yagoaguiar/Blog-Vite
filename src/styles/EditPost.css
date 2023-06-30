@@ -39,7 +39,8 @@
 }
 
 .card button {
-  padding: 0.5em 1em;
+  padding: 0.5em 2em;
+  margin: 0.7rem auto;
   background-color: #1a8918;
   color: #fff;
   border: none;
@@ -49,5 +50,5 @@
 }
 
 .card button:hover {
-  background-color: #0056b3;
+  background-color: #f8d7da;
 }
