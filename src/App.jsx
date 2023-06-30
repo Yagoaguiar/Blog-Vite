@@ -13,7 +13,7 @@ import CreatePost from "./pages/CreatePost";
 import Dashboard from "./pages/Dashboard";
 import Search from "./pages/Search";
 import PostDetail from "./pages/PostDetail";
-import EditPost from "./pages/PostDetail";
+import EditPost from "./pages/EditPost";
 import ForgotPassword from "./pages/ForgotPassword";
 import "./App.css";
 
@@ -47,6 +47,10 @@ function App() {
               <Route
                 path="/register"
                 element={!user ? <Register /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/homeLogado"
+                element={user ? <HomeLogado /> : <Navigate to="/login" />}
               />
               <Route
                 path="/posts/create"
