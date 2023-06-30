@@ -27,10 +27,10 @@ const HomeLogado = () => {
 
   return (
     <div className={style.home}>
-      <h1>
+      <h2>
         Seu perfil cria posts que nos dá feedbacks sobre nossa empresa, você
-        pode fechá-los quando houver resposta no seu dashboard
-      </h1>
+        pode fechá-los quando houver resposta no seu dashboard.
+      </h2>
       <h2>Posts:</h2>
       <div className={style.cardContainer}>
         {posts.length > 0 ? (

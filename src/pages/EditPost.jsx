@@ -87,7 +87,7 @@ const EditPost = () => {
           </div>
           <div>
             <label>Image:</label>
-            <img src={newImage || image} alt="Post" />
+            <img src={newImage || image} alt="Post" type="button" />
             <input type="file" accept="image/*" onChange={handleImageUpload} />
           </div>
           <button type="button" onClick={handleUpdate}>
