@@ -2,7 +2,6 @@ import { useFetchDocument } from "../hooks/useFetchDocuments";
 import { useParams } from "react-router-dom";
 import style from "../styles/Post.module.css";
 
-
 const Post = () => {
   const { id } = useParams();
   const { document: post } = useFetchDocument("posts", id);
@@ -10,7 +9,7 @@ const Post = () => {
   return (
     <div className={style.post_container}>
       {post && (
-        <div className={style.center_content}>
+        <>
           <h1>{post.title}</h1>
           <img src={post.image} alt={post.title} />
           <p>{post.body}</p>
@@ -23,7 +22,7 @@ const Post = () => {
               </p>
             ))}
           </div>
-        </div>
+        </>
       )}
     </div>
   );
