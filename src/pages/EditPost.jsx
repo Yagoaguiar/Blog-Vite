@@ -12,6 +12,7 @@ const EditPost = () => {
   const [body, setBody] = useState("");
   const [image, setImage] = useState("");
   const [newImage, setNewImage] = useState(null); // Armazena a nova imagem selecionada
+  const [formError, setFormError] = useState("");
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -35,6 +36,11 @@ const EditPost = () => {
   }, [id]);
 
   const handleUpdate = async () => {
+    if (!title || !body) {
+      setFormError("Por favor, preencha todos os campos obrigatórios!");
+      return;
+    }
+
     try {
       const postData = {
         title,
