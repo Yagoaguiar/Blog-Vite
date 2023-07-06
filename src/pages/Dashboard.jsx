@@ -41,13 +41,16 @@ const Dashboard = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    try {
-      await deleteDoc(doc(db, "posts", id));
-      console.log("Document deleted successfully");
-      // Remove the deleted post from the posts state
-      setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id));
-    } catch (error) {
-      console.log("Error occurred while deleting the document:", error);
+    const confirmation = window.confirm("Tem certeza de que deseja excluir este post?");
+    if (confirmation) {
+      try {
+        await deleteDoc(doc(db, "posts", id));
+        console.log("Document deleted successfully");
+        // Remove the deleted post from the posts state
+        setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id));
+      } catch (error) {
+        console.log("Error occurred while deleting the document:", error);
+      }
     }
   };
 
