@@ -22,8 +22,11 @@ const Login = () => {
     };
 
     const res = await login(user);
-    navigate("/");
-    console.log(res);
+    if (res.success) {
+      navigate("/");
+    } else {
+      setError("Usuário ou senha incorretos");
+    }
   };
 
   useEffect(() => {
