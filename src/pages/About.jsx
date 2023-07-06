@@ -9,7 +9,7 @@ const About = () => {
       </h2>
       <p>
         Esse projeto foi feito para faculdade, pensando em trabalhar com rotas,
-        validações e firabase.
+        validações e firabase. para deixar seu recado em nosso Blog clique no botão!!
       </p>
       <p>Todo código foi feito em react </p>
       <Link to="/posts/create" className="btn">
