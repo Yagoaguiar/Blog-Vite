@@ -11,7 +11,7 @@ const EditPost = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [image, setImage] = useState("");
-  const [newImage, setNewImage] = useState(null); // Armazena a nova imagem selecionada
+  const [newImage, setNewImage] = useState(null);
   const [formError, setFormError] = useState("");
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const EditPost = () => {
 
   const handleUpdate = async () => {
     if (!title || !body) {
-      setFormError("Por favor, preencha todos os campos obrigatórios!");
+      setFormError("Por favor, preencha os campos Title e Body");
       return;
     }
 
@@ -76,6 +76,7 @@ const EditPost = () => {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              required
             />
           </div>
           <div>
@@ -83,6 +84,7 @@ const EditPost = () => {
             <textarea
               value={body}
               onChange={(e) => setBody(e.target.value)}
+              required
             ></textarea>
           </div>
           <div>
@@ -93,6 +95,7 @@ const EditPost = () => {
           <button type="button" onClick={handleUpdate}>
             Update Post
           </button>
+          {formError && <p className="error">{formError}</p>}
         </form>
       </div>
     </div>
