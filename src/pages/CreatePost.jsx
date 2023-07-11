@@ -8,7 +8,7 @@ const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [body, setBody] = useState("");
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState("");
   const [formError, setFormError] = useState("");
   const { insertDocument, response } = useInsertDocument("posts");
   const navigate = useNavigate();
@@ -18,34 +18,31 @@ const CreatePost = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormError("");
+
+    if (!title || !image || !tags || !body) {
+      setFormError("Por favor, preencha todos os campos!");
+      return;
+    }
+
     try {
       new URL(image);
     } catch (error) {
-      setFormError("A imagem precisa ser uma URL.");
+      setFormError("A imagem precisa ser uma URL válida.");
+      return;
     }
-    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
-    if (!title || !image || !tags || !body) {
-      setFormError("Por favor, preencha todos os campos!");
-    }
-    console.log(tagsArray);
-    console.log({
-      title,
-      image,
-      body,
-      tags: tagsArray,
-      uid: user.uid,
-      createdBy: user.displayName,
-    });
 
-    if (formError) return;
-    insertDocument({
+    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
+
+    const postData = {
       title,
       image,
       body,
       tags: tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
-    });
+    };
+
+    insertDocument(postData);
     navigate("/");
   };
 

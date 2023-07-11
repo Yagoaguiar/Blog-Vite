@@ -69,6 +69,7 @@ const EditPost = () => {
     <div className="edit_post">
       <div className="card">
         <h2>Edit Post</h2>
+
         <form>
           <div>
             <label>Title:</label>
